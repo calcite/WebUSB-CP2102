@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>WebUSB cp2102</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/2.9.2/xterm.min.js" integrity="sha256-8rsVcpCnO6HdeJL84i0VdubjM42fjSmO8aONghdq3gc=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/xterm/2.9.2/xterm.min.css" integrity="sha256-w69o8Y6P5VZjfYFmn2KlqMU7TUi2I+oWObi8FLlVZZg=" crossorigin="anonymous" />
+</head>
+
+<body>
+  <h1>WebUSB cp2102</h1>
+  <button id="flash-button" style="padding: 20px; font-size: 20px">Read data</button>
+  <div id="serial"></div>
+
+  <script src="WebUSB cp2102"></script>
+  <script type="module">
+    import usbCp2102 from '../index.js';
+
+    const term = new Terminal()
+
+    term.open(document.querySelector("#serial"))
+    document.querySelector("#flash-button").addEventListener("click", () => {
+      const cpDev = new usbCp2102({});
+      cpDev.connect().then(async () => {
+        await cpDev.initialize();
+        const receive = async () => {
+          const data = await cpDev.read();
+          const s = String.fromCharCode.apply(null, new Uint8Array(data))
+          term.write(s);
+          await receive();
+        }
+        await receive();
+      })
+    })
+  </script>
+</body>
+</html>
