@@ -12,8 +12,6 @@ jobs:
         with:
           node-version: 18
           registry-url: "https://registry.npmjs.org"
-      - name: Install dependencies and build 🔧
-        run: npm ci
       - name: Package module
         run: npm pack
       - name: Verify tag version is the same as package.json version
@@ -33,7 +31,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: ESPEFUSE-JS ${{ github.ref }}
+          release_name: WebUSB-CP2102 ${{ github.ref }}
           draft: true
           body: |
             ### Release Highlights
