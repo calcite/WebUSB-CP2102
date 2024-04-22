@@ -9,7 +9,7 @@ Supported browsers (systems) - https://caniuse.com/webusb
 
 ### Example
 
-Live demo - https://calcite.github.io/WebUSB-CP2102/
+Live demo - https://calcite.github.io/WebUSB-CP2102/example/
 
 ```javascript
 import usbCp2102 from '@alcz/webusb-cp2102';
