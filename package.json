@@ -1,6 +1,6 @@
 {
   "name": "@alcz/webusb-cp2102",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Simple WebUSB CP2102 communication library",
   "main": "index.js",
   "scripts": {
