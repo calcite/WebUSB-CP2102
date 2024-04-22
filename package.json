@@ -10,6 +10,9 @@
     "CP2102",
     "WebUSB"
   ],
+  "files": [
+    "index.js"
+  ],
   "author": "",
   "license": "MIT",
   "repository": {
